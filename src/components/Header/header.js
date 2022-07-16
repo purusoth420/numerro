@@ -20,10 +20,13 @@ import text from '../../assets/images/text.png'
 import gallary from '../../assets/images/gallary.png'
 import search from '../../assets/images/search.png'
 import gear from '../../assets/images/gear.png'
-import profile from '../../assets/images/profile.png'
+import profile from '../../assets/images/profile.png';
+import {useNavigate} from 'react-router-dom'
 
 export const Header = () => {
     const [cls, setcls] = useState();
+
+    const navigate = useNavigate();
 
     function handleClass(e) {
         var id = e.target.id;
@@ -48,7 +51,7 @@ export const Header = () => {
                     <div className={cls == "2" ? 'rectangle slide' : ""} onClick={(e) => setcls(e.target.id)}>
                         <img src={icon1} id='2' className='appicon' />
                         <div className='sub'>
-                            <img src={rec} className='subapp' />
+                            <img src={rec}  className='subapp' />
                             <img src={rec1} className='subapp' />
                             <img src={rec2} className='subapp' />
                             <img src={rec3} className='subapp' />

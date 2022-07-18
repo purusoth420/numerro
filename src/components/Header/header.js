@@ -21,10 +21,13 @@ import gallary from '../../assets/images/gallary.png'
 import search from '../../assets/images/search.png'
 import gear from '../../assets/images/gear.png'
 import profile from '../../assets/images/profile.png';
+import team from '../../assets/images/team.svg';
 import {useNavigate} from 'react-router-dom'
+import { GiHamburgerMenu } from 'react-icons/gi';
 
 export const Header = () => {
     const [cls, setcls] = useState();
+    const [menu, setmenu] = useState(false);
 
     const navigate = useNavigate();
 
@@ -110,10 +113,26 @@ export const Header = () => {
 
                 </div>
                 <div>
-                    {/* <img src={rec3} className='subapp' /> */}
+                    <img src={team} className='subapp' />
                     <img src={gear} className='subapp' />
                     <img src={profile} className='subapp' />
 
+                </div>
+                <div className='mobile'>
+                    <div className='mobilemenu'>
+                        <GiHamburgerMenu onClick={()=> setmenu(i=> !i)} />
+                        <div className={menu ? "slider show" : "slider hide"}>
+                            <p>Profile</p>
+                            <p>Setting</p>
+                            <p>Edit</p>
+                        </div>
+                    </div>
+                <div>
+                    <img src={team} className='subapp' />
+                    <img src={gear} className='subapp' />
+                    <img src={profile} className='subapp' />
+
+                </div>
                 </div>
             </div>
             <div className='vertical'>

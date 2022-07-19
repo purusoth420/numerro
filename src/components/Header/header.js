@@ -18,6 +18,7 @@ import hand from '../../assets/images/hand.png'
 import slide from '../../assets/images/slide.png'
 import text from '../../assets/images/text.png'
 import gallary from '../../assets/images/gallary.png'
+import shapes from '../../assets/images/shapes.png'
 import search from '../../assets/images/search.png'
 import gear from '../../assets/images/gear.png'
 import profile from '../../assets/images/profile.png';

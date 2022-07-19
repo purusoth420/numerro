@@ -1,4 +1,4 @@
-.home{
+.home {
     // width: 97% ;
     display: flex;
     // justify-content: center;
@@ -6,33 +6,91 @@
     width: 97%;
     position: absolute;
     right: 0;
+
     // background-color: white;
-    .center{
+    .center {
         // background-color: white;
         position: absolute;
         width: 76.6%;
         height: 100%;
         text-align: center;
-        display: flex;
+        // display: flex;
         justify-content: center;
         align-items: center;
-        .canvas{
+
+        .canvas {
             width: 44%;
             height: 77.82%;
             background-color: white;
         }
     }
-    .rightbar{
+
+    .rightbar {
         position: absolute;
         width: 23.5%;
         right: 0;
         background-color: #F5F5F5;
-        border-left:2px solid #DDDDDD;
+        border-left: 2px solid #DDDDDD;
         height: 100%;
-        .colorpicker{
-            width: auto !important;
+
+        // display: flex;
+        // align-content: center;
+        // justify-content: center;
+        // flex-direction:column;
+        overflow-y: scroll;
+
+        >div {
+            display: flex;
+            justify-content: center;
+        }
+
+        .images {
+            height: 40%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 5%;
+            width: 80%;
+
+            .pixabay {
+                padding: 5px;
+            }
+        }
+
+        .colorpicker {
+            width: 80% !important;
             margin: 5px !important;
             box-shadow: none !important;
+
+            // height: 40% !important;
+
+            > :first-child {
+                padding-bottom: 40% !important;
+            }
         }
+
     }
+}
+
+.menu {
+    background-color: #C0C0C0;
+    height: 5%;
+    display: flex;
+    align-items: center;
+}
+
+.menu h3 {
+    border-right: 1px solid #00000070;
+    /* width: 100px; */
+    padding: 0 20px;
+    color: #3A3A3A;
+    font-size: 16px;
+}
+
+.canvasscreen {
+    width: 100%;
+    height: 93%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

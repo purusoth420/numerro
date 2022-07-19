@@ -7,17 +7,20 @@ import axios from 'axios';
 export const Home = () => {
   const key = "28701053-77bb3ba75e209ee18ae00ab97"
   const [images, setImages] = useState([])
+  const [search, setsearch] = useState('')
 
   useEffect(() => {
-    handleImages();
+    // handleImages();
 
   }, [])
 
 
 
-  async function handleImages() {
+  async function handleImages(e) {
+    var value = e.target.value
+    setsearch(value);
     try {
-      await axios.get(`https://pixabay.com/api/?key=` + key).then(
+      await axios.get(`https://pixabay.com/api/?key=` + key +"&q=" + value).then(
         (res) => {
           if (res.status == 200) {
             setImages(res.data)
@@ -52,7 +55,7 @@ export const Home = () => {
           <SketchPicker className='colorpicker' />
         </div>
         <div>
-          <input></input>
+          <input value={search} onChange={(e)=> handleImages(e)}></input>
         </div>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           <div className='images'>

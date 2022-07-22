@@ -14,6 +14,7 @@ export const Home = () => {
   const [pexels, setpexels] = useState('')
   const [search, setsearch] = useState('')
   const [show, setShow] = useState(0)
+  const [menu, setMenu] = useState(false)
 
   useEffect(() => {
     // handleImages();
@@ -60,11 +61,22 @@ export const Home = () => {
     <div className='home'>
       <div className='center'>
 
-        <div className='menu'>
-          {/* <div> */}
-          <h3>Untitled - 1</h3>
-          {/* </div> */}
+      <div className='menu'>
+          <h5 onClick={()=> setMenu(i=> !i)}>File</h5>
+          <h5>Edit</h5>
+          <h5>Window</h5>
+          <h5>About</h5>
         </div>
+        <div className={menu ? 'hiddenmenu slide' :"hiddenmenu "} >
+            <h5>Create new file</h5>
+            <h5>Open</h5>
+            <h5>Open recent files</h5>
+            <h5>Close</h5>
+            <h5>Close All</h5>
+          </div>
+        {/* <div className='untitled'>
+          <h3>Untitled - 1</h3>
+        </div> */}
         <div className="canvasscreen">
 
           <div className='canvas'>

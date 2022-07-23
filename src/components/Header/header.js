@@ -25,6 +25,7 @@ import profile from '../../assets/images/profile.png';
 import team from '../../assets/images/team.svg';
 import { useNavigate } from 'react-router-dom'
 import { GiHamburgerMenu } from 'react-icons/gi';
+import {FaEraser} from 'react-icons/fa'
 
 export const Header = () => {
     const [cls, setcls] = useState();
@@ -144,6 +145,7 @@ export const Header = () => {
                     <img src={text} className='subapp' />
                     <img src={gallary} className='subapp' />
                     <img src={search} className='subapp' />
+                    <FaEraser color='white'/>
                 </div>
             </div>
         </>

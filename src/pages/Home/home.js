@@ -6,6 +6,7 @@ import axios from 'axios';
 import { homepage } from '../../config/api'
 import pixabay from '../../assets/images/pixabay.png'
 import pexel from '../../assets/images/pexels.png'
+import {FaSearch} from 'react-icons/fa'
 
 export const Home = () => {
   const key = "28701053-77bb3ba75e209ee18ae00ab97"
@@ -61,19 +62,19 @@ export const Home = () => {
     <div className='home'>
       <div className='center'>
 
-      <div className='menu'>
-          <h5 onClick={()=> setMenu(i=> !i)}>File</h5>
+        <div className='menu'>
+          <h5 onClick={() => setMenu(i => !i)}>File</h5>
           <h5>Edit</h5>
           <h5>Window</h5>
           <h5>About</h5>
         </div>
-        <div className={menu ? 'hiddenmenu slide' :"hiddenmenu "} >
-            <h5>Create new file</h5>
-            <h5>Open</h5>
-            <h5>Open recent files</h5>
-            <h5>Close</h5>
-            <h5>Close All</h5>
-          </div>
+        <div className={menu ? 'hiddenmenu slide' : "hiddenmenu "} >
+          <h5>Create new file</h5>
+          <h5>Open</h5>
+          <h5>Open recent files</h5>
+          <h5>Close</h5>
+          <h5>Close All</h5>
+        </div>
         {/* <div className='untitled'>
           <h3>Untitled - 1</h3>
         </div> */}
@@ -86,7 +87,6 @@ export const Home = () => {
       <div className='rightbar'>
         <div>
           <h1 style={{ textAlign: 'center' }}>Font Styles</h1>
-
         </div>
         <div>
           <SketchPicker className='colorpicker' />
@@ -95,17 +95,16 @@ export const Home = () => {
           show == 0 ?
 
             < >
-              <div className='search'>
-                <div>
-                  {/* <input value={search} className='form-control input-sm' onChange={(e) => handleImages(e)}></input> */}
-                  <select class="form-control input-sm" value={show} onChange={(e) => setShow(e.target.value)}>
+              <div>
+                <div  className='search'>
+                  <select class="" value={show} onChange={(e) => setShow(e.target.value)}>
                     <option value={0}>Pixabay</option>
                     <option value={1}>Pexels</option>
                   </select>
+                  <input value={search} className='' placeholder='Search..' onChange={(e) => handleImages(e)}></input>
                 </div>
-                <div>
-                  <input value={search} className='form-control input-sm' onChange={(e) => handleImages(e)}></input>
-                </div>
+                {/* <div>
+                </div> */}
               </div>
               <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <div className='images'>
@@ -123,17 +122,17 @@ export const Home = () => {
             :
 
             < >
-              <div className='search'>
-                <div>
-                  {/* <input value={search} className='form-control input-sm' onChange={(e) => handleImages(e)}></input> */}
-                  <select class="form-control input-sm" value={show} onChange={(e) => setShow(e.target.value)}>
+              <div >
+                <div  className='search'>
+                  <select class="" value={show} onChange={(e) => setShow(e.target.value)}>
                     <option value={0}>Pixabay</option>
                     <option value={1}>Pexels</option>
                   </select>
+                  <input value={search} className='' placeholder='Search..' onChange={(e) => handleImages(e)}></input>
                 </div>
-                <div>
+                {/* <div>
                   <input value={pexels} className='form-control input-sm' onChange={(e) => handlePexels(e)}></input>
-                </div>
+                </div> */}
               </div>
               <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <div className='images'>

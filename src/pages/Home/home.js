@@ -6,16 +6,20 @@ import axios from 'axios';
 import { homepage } from '../../config/api'
 import pixabay from '../../assets/images/pixabay.png'
 import pexel from '../../assets/images/pexels.png'
-import {FaSearch} from 'react-icons/fa'
+import uns from '../../assets/images/unsplash.png'
+import { FaSearch } from 'react-icons/fa'
 
 export const Home = () => {
   const key = "28701053-77bb3ba75e209ee18ae00ab97"
   const [images, setImages] = useState([])
   const [pexelimg, setpexelimg] = useState([])
+  const [unsplash, setunsplash] = useState([])
   const [pexels, setpexels] = useState('')
   const [search, setsearch] = useState('')
+  const [unsplsh, setunsplsh] = useState('')
   const [show, setShow] = useState(0)
   const [menu, setMenu] = useState(false)
+  const [title, settitle] = useState('Untitled')
 
   useEffect(() => {
     // handleImages();
@@ -24,7 +28,7 @@ export const Home = () => {
 
 
 
-  async function handleImages(e) {
+  async function handlePixabay(e) {
     var value = e.target.value
     setsearch(value);
     try {
@@ -58,6 +62,25 @@ export const Home = () => {
     }
   }
 
+  async function handleUnsplash(e) {
+    var value = e.target.value
+    setunsplsh(value);
+    try {
+      await axios.get(homepage.unsplash + value, {
+        headers: {
+          Authorization: `Client-ID ${homepage.unsplashkey}`
+        }
+      }).then(
+        (res) => {
+          if (res.status == 200) {
+            setunsplash(res.data)
+          }
+        })
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <div className='home'>
       <div className='center'>
@@ -75,9 +98,9 @@ export const Home = () => {
           <h5>Close</h5>
           <h5>Close All</h5>
         </div>
-        {/* <div className='untitled'>
-          <h3>Untitled - 1</h3>
-        </div> */}
+        <div className='untitled'>
+          <h5 onDoubleClick={() => alert('asdas')}>{title}</h5>
+        </div>
         <div className="canvasscreen">
 
           <div className='canvas'>
@@ -96,12 +119,13 @@ export const Home = () => {
 
             < >
               <div>
-                <div  className='search'>
-                  <select class="" value={show} onChange={(e) => setShow(e.target.value)}>
+                <div className='search'>
+                  <select className="" value={show} onChange={(e) => setShow(e.target.value)}>
                     <option value={0}>Pixabay</option>
                     <option value={1}>Pexels</option>
+                    <option value={2}>Unsplash</option>
                   </select>
-                  <input value={search} className='' placeholder='Search..' onChange={(e) => handleImages(e)}></input>
+                  <input value={search} className='' placeholder='Search..' onChange={(e) => handlePixabay(e)}></input>
                 </div>
                 {/* <div>
                 </div> */}
@@ -109,7 +133,7 @@ export const Home = () => {
               <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <div className='images'>
                   {
-                    images == "" ? <img src={pixabay} ></img> :
+                    images == "" ?  <img src={pixabay} ></img> :
                       images.hits.map((i) => {
                         return <div key={i.id} className="pixabay" >
                           <img src={i.previewURL} />
@@ -120,33 +144,62 @@ export const Home = () => {
               </div>
             </ >
             :
-
-            < >
-              <div >
-                <div  className='search'>
-                  <select class="" value={show} onChange={(e) => setShow(e.target.value)}>
-                    <option value={0}>Pixabay</option>
-                    <option value={1}>Pexels</option>
-                  </select>
-                  <input value={search} className='' placeholder='Search..' onChange={(e) => handleImages(e)}></input>
-                </div>
-                {/* <div>
+            show == 1 ?
+              < >
+                <div >
+                  <div className='search'>
+                    <select className="" value={show} onChange={(e) => setShow(e.target.value)}>
+                      <option value={0}>Pixabay</option>
+                      <option value={1}>Pexels</option>
+                      <option value={2}>Unsplash</option>
+                    </select>
+                    <input value={pexels} className='' placeholder='Search..' onChange={(e) => handlePexels(e)}></input>
+                  </div>
+                  {/* <div>
                   <input value={pexels} className='form-control input-sm' onChange={(e) => handlePexels(e)}></input>
                 </div> */}
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <div className='images'>
-                  {
-                    pexelimg == "" ? <img src={pexel} ></img> :
-                      pexelimg.photos.map((i) => {
-                        return <div key={i.id} className="pixabay" >
-                          <img src={i.src.tiny} />
-                        </div>
-                      })
-                  }
                 </div>
-              </div>
-            </ >
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                  <div className='images'>
+                    {
+                      pexelimg == "" ? <img src={pexel} ></img>  :
+                        pexelimg.photos.map((i) => {
+                          return <div key={i.id} className="pixabay" >
+                            <img src={i.src.tiny} />
+                          </div>
+                        })
+                    }
+                  </div>
+                </div>
+              </ >
+              :
+              < >
+                <div >
+                  <div className='search'>
+                    <select className="" value={show} onChange={(e) => setShow(e.target.value)}>
+                      <option value={0}>Pixabay</option>
+                      <option value={1}>Pexels</option>
+                      <option value={2}>Unsplash</option>
+                    </select>
+                    <input value={unsplsh} className='' placeholder='Search..' onChange={(e) => handleUnsplash(e)}></input>
+                  </div>
+                  {/* <div>
+                  <input value={pexels} className='form-control input-sm' onChange={(e) => handlePexels(e)}></input>
+                </div> */}
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                  <div className='images'>
+                    {
+                      unsplash == "" ?  <img src={uns} ></img>  :
+                        unsplash.results.map((i) => {
+                          return <div key={i.id} className="pixabay" >
+                            <img src={i.urls.thumb} />
+                          </div>
+                        })
+                    }
+                  </div>
+                </div>
+              </ >
         }
       </div>
     </div>
